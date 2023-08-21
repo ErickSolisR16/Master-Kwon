@@ -1,0 +1,51 @@
+<h2 class="title">Todos los atletas</h2>
+
+<div class="row">
+    {{#each athletes}}
+    <div class="col-md-4">
+        <div class="card" id="card-info">
+            <div class="card-body">
+                <h4 class="card-title d-flex justify-content-between aling-items-center">
+                    {{name}}
+                </h4>
+                <p>Cédula: {{IDNumber}} <br> Correo: {{mail}} <br> Sede: {{headquarters}} <br>Cinturón: {{belt}} <br>
+                    Fecha de nacimiento: {{dateBirth}} <br> Edad: {{age}} años <br> Clase: {{trainingClass}} <br>
+                    Celular: {{phoneNumber}} <br> Número de emergencia: {{emergencyNumber}} <br> Tipo de sangre:
+                    {{bloodType}} <br> Alergias: {{allergies}} <br> Tratamientos: {{treatments}}
+                </p>
+                <button type="button" class="btn btn-danger btn-block btn-sm" data-toggle="modal"
+                    data-target="#exampleModal{{_id}}">
+                    Eliminar
+                </button>
+                <div class="modal fade" id="exampleModal{{_id}}" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Eliminar atleta</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                ¿Está seguro que desea eliminar el atleta? <br>
+                                Perdera todos los datos relacionados con el atleta.
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+                                <form action="/athletes/delete/{{_id}}?_method=DELETE" method="POST">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <button type="submit" class="btn btn-danger">
+                                        Eliminar
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+
+</div>
