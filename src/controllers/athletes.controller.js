@@ -144,5 +144,16 @@ function assignClass(age) {
     }
 };
 
+/**
+ * We render all registered athletes 
+ * 
+ * @param {*} req 
+ * @param {*} res 
+ */
+athletesCtrl.renderAthletes = async (req, res) => {
+    const athletes = await Athlete.find().lean().sort({ age: 'asc' });
+    res.render('athletes/allAthletes', { athletes });
+};
+
 
 module.exports = athletesCtrl;
