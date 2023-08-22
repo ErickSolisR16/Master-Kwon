@@ -17,10 +17,15 @@
 
     <div class="main-container">
         <div class="container p-5">
+            {{>messages}}
+            {{>errors}}
             {{{body}}}
         </div>
     </div>
 
+    <!--FONTAWESOME JS-->
+    <script src="https://kit.fontawesome.com/0f01a6c81d.js" crossorigin="anonymous"></script>
+    <!--BOOSTRAP JS-->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>

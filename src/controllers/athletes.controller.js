@@ -155,5 +155,68 @@ athletesCtrl.renderAthletes = async (req, res) => {
     res.render('athletes/allAthletes', { athletes });
 };
 
+/**
+ * Rendering an athlete's update form
+ * 
+ * @param {*} req 
+ * @param {*} res 
+ */
+athletesCtrl.renderEditForm = async (req, res) => {
+    const athlete = await Athlete.findById(req.params.id).lean();
+    res.render('athletes/editAthlete', { athlete });
+};
+
+/**
+ * Rendering an athlete's update form
+ * 
+ * @param {*} req 
+ * @param {*} res 
+ */
+athletesCtrl.update = async (req, res) => {
+    const errors = [];
+    const { name, mail, belt, dateBirth, phoneNumber, emergencyNumber, bloodType } = req.body;
+    let allergies = req.body.allergies;
+    let treatments = req.body.treatments;
+    if (!name) {
+        errors.push({ text: 'No se introdujo el nombre del atleta' });
+    }
+    if (!mail) {
+        errors.push({ text: 'No se introdujo el correo del atleta' });
+    }
+    if (!belt) {
+        errors.push({ text: 'No se introdujo el cinturón del atleta' });
+    }
+    if (!dateBirth) {
+        errors.push({ text: 'No se introdujo la fecha de nacimiento del atleta' });
+    }
+    if (!phoneNumber) {
+        errors.push({ text: 'No se introdujo el celular del atleta' });
+    }
+    if (!emergencyNumber) {
+        errors.push({ text: 'No se introdujo el número de emergencia del atleta' });
+    }
+    if (!bloodType) {
+        errors.push({ text: 'No se introdujo el tipo de sangre del atleta' });
+    }
+    if (errors.length > 0) {
+        const athlete = await Athlete.findById(req.params.id).lean();
+        return res.render('athletes/editAthlete', {
+            errors,
+            athlete
+        });
+    } else {
+        if (allergies == '') {
+            allergies = 'No aplica';
+        }
+        if (treatments == '') {
+            treatments = 'No aplica';
+        }
+        var age = calculateAge(dateBirth);
+        var trainingClass = assignClass(age);
+        await Athlete.findByIdAndUpdate(req.params.id, { name, mail, belt, dateBirth, age, trainingClass, phoneNumber, emergencyNumber, bloodType, allergies, treatments });
+        req.flash('msg_successfull', 'Atleta actualizado exitosamente');
+        res.redirect('/athletes');
+    }
+};
 
 module.exports = athletesCtrl;
