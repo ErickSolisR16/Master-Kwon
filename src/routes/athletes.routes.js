@@ -8,7 +8,8 @@ const {
     renderEditForm,
     update,
     deleteAthlete, 
-    searchAthlete
+    searchAthlete, 
+    athleteSummary
 } = require('../controllers/athletes.controller');
 
 router.get('/athletes/add', renderForm);
@@ -24,5 +25,7 @@ router.put('/atheltes/edit/:id', update);
 router.delete('/athletes/delete/:id', deleteAthlete);
 
 router.post('/athletes/search', searchAthlete);
+
+router.get('/athletes/summary', athleteSummary);
 
 module.exports = router;

@@ -244,4 +244,15 @@ athletesCtrl.searchAthlete = async (req, res) => {
     res.render('athletes/allAthletes', { athletes });
 };
 
+/**
+ * Athlete data summary
+ * 
+ * @param {*} req 
+ * @param {*} res 
+ */
+athletesCtrl.athleteSummary = async (req, res) => {
+    const athletes = await Athlete.find().lean();
+    res.render('athletes/summaryAthletes', { athletes });
+};
+
 module.exports = athletesCtrl;
