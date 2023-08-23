@@ -1,0 +1,24 @@
+<h2 class="title">Resumen de los atletas</h2>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Cédula</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Alergias</th>
+            <th scope="col">Tratamientos</th>
+            <th scope="col">Número de emergencia</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each athletes}}
+        <tr>
+            <td>{{IDNumber}}</td>
+            <td>{{name}}</td>
+            <td>{{allergies}}</td>
+            <td>{{treatments}}</td>
+            <td>{{emergencyNumber}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
