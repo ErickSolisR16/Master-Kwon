@@ -231,4 +231,17 @@ athletesCtrl.deleteAthlete = async (req, res) => {
     res.redirect('/athletes');
 };
 
+/**
+ * We create a search filter for athletes
+ * 
+ * @param {*} req 
+ * @param {*} res 
+ */
+athletesCtrl.searchAthlete = async (req, res) => {
+    const nameBody = req.body.name[1];
+    const name = new RegExp(nameBody, 'i');
+    const athletes = await Athlete.find({ name: name }).lean();
+    res.render('athletes/allAthletes', { athletes });
+};
+
 module.exports = athletesCtrl;

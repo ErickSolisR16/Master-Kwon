@@ -1,5 +1,15 @@
 <h2 class="title">Todos los atletas</h2>
 
+<form action="/athletes/search" method="POST">
+    <div class="input-group">
+        <input type="hidden" name="name" value="{{name}}">
+        <input type="search" name="name" class="form-control rounded" placeholder="Buscar atleta">
+        <button class="btn btn-primary" type="submit">
+            Buscar
+        </button>
+    </div>
+</form>
+
 <div class="row">
     {{#each athletes}}
     <div class="col-md-4">

@@ -41,7 +41,7 @@ Development environment, to build the application we use the following:
 ```bash
 npm run dev
 ```
-We open the address in our browser localhost:4000 (predefined address) 
+We open the address in our browser localhost:8000 (predefined address) 
 
 ### Production Setup 📦
 
