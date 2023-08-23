@@ -219,4 +219,16 @@ athletesCtrl.update = async (req, res) => {
     }
 };
 
+/**
+ * Elimination of athletes
+ * 
+ * @param {*} req 
+ * @param {*} res 
+ */
+athletesCtrl.deleteAthlete = async (req, res) => {
+    await Athlete.findByIdAndDelete(req.params.id);
+    req.flash('msg_successfull', 'Atleta eliminado exitosamente');
+    res.redirect('/athletes');
+};
+
 module.exports = athletesCtrl;

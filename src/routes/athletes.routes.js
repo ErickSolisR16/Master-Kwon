@@ -2,11 +2,12 @@ const { Router } = require('express');
 const router = Router();
 
 const {
-    renderForm, 
+    renderForm,
     newAthlete,
     renderAthletes,
     renderEditForm,
-    update
+    update,
+    deleteAthlete
 } = require('../controllers/athletes.controller');
 
 router.get('/athletes/add', renderForm);
@@ -18,5 +19,7 @@ router.get('/athletes', renderAthletes);
 router.get('/atheltes/edit/:id', renderEditForm);
 
 router.put('/atheltes/edit/:id', update);
+
+router.delete('/athletes/delete/:id', deleteAthlete);
 
 module.exports = router;
