@@ -133,4 +133,16 @@ function calculateAge(dateBirth) {
     return age;
 };
 
+/**
+ * We render all registered coachs
+ * 
+ * @param {*} req 
+ * @param {*} res 
+ */
+coachesCtrl.rendercoaches = async (req, res) => {
+    const coachs = await Coach.find().lean();
+    res.render('coaches/allCoaches', { coachs });
+};
+
+
 module.exports = coachesCtrl;
