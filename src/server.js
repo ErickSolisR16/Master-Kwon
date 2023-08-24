@@ -55,6 +55,7 @@ app.get('/', (req, res) => {
     res.render('index')
 });
 app.use(require('./routes/athletes.routes'));
+app.use(require('./routes/coaches.routes'));
 
 // * Static files
 // ? Define where the public folder is
