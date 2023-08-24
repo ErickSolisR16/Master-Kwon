@@ -1,0 +1,61 @@
+<div class="col-md-6 mx-auto">
+    <div class="card text-center">
+        <div class="card-header">
+            <h3>Nuevo entrenador</h3>
+        </div>
+        <div class="card-body">
+            <form action="/coaches/newCoach" method="POST">
+                <div class="form-group">
+                    <input type="number" name="IDNumber" class="form-control" placeholder="Cédula" value="{{IDNumber}}">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="name" class="form-control" placeholder="Nombre" value="{{name}}">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="mail" class="form-control" placeholder="Correo" value="{{mail}}">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="belt" class="form-control" placeholder="Cinturón" value="{{belt}}">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="dateBirth" class="form-control"
+                        placeholder="Fecha de nacimiento (dd/mm/aaaa)" value="{{dateBirth}}">
+                </div>
+                <div class="form-group">
+                    <input type="number" name="phoneNumber" class="form-control" placeholder="Número de telefono"
+                        value="{{phoneNumber}}">
+                </div>
+                <div class="form-group">
+                    <input type="number" name="emergencyNumber" class="form-control" placeholder="Número de emergencia"
+                        value="{{emergencyNumber}}">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="bloodType" class="form-control" placeholder="Tipo de sangre"
+                        value="{{bloodType}}">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="allergies" class="form-control" placeholder="Alergias"
+                        value="{{allergies}}">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="treatments" class="form-control" placeholder="Tratamientos"
+                        value="{{treatments}}">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" name="password" placeholder="Contraseña">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" name="confirm_password"
+                        placeholder="Confirmar contraseña">
+                </div>
+
+                <div class="form-group">
+                    <button class="btn btn-primary btn-block">
+                        Salvar
+                    </button>
+                    <a href="/coaches" class="btn btn-danger btn-block">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
