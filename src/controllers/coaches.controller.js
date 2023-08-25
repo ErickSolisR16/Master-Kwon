@@ -1,5 +1,6 @@
 const coachesCtrl = {};
 const Coach = require('../models/coaches');
+const passport = require('passport');
 
 /**
  * Render the form of a new coach
@@ -218,5 +219,24 @@ coachesCtrl.deleteCoach = async (req, res) => {
     req.flash('msg_successfull', 'Entrenador eliminado exitosamente');
     res.redirect('/coaches');
 };
+
+/**
+ * Rendering an coach's signin form
+ * 
+ * @param {*} req 
+ * @param {*} res 
+ */
+coachesCtrl.renderSigninForm = (req, res) => {
+    res.render('coaches/signin');
+};
+
+/**
+ * Helps to authenticate login
+ */
+coachesCtrl.signin = passport.authenticate('local', {
+    failureRedirect: '/coaches/signin',
+    successRedirect: '/athletes',
+    failureFlash: true
+});
 
 module.exports = coachesCtrl;

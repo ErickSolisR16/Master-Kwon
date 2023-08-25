@@ -9,6 +9,7 @@ const methodOverride = require('method-override');
 
 // * Initialization
 const app = express();
+require('./config/passport');
 
 // * Configurations
 // ? Port number configuration
@@ -38,7 +39,6 @@ app.use(passport.session());
 app.use(flash());
 app.use(methodOverride('_method'));
 
-
 // * Global variables
 app.use((req, res, next) => {
     res.locals.msg_successfull = req.flash('msg_successfull');
@@ -47,7 +47,6 @@ app.use((req, res, next) => {
     res.locals.user = req.user || null;
     next();
 });
-
 
 // * Routes
 // ? Path where the application starts
