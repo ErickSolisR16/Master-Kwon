@@ -207,4 +207,16 @@ coachesCtrl.update = async (req, res) => {
     }
 };
 
+/**
+ * Elimination of coachs
+ * 
+ * @param {*} req 
+ * @param {*} res 
+ */
+coachesCtrl.deleteCoach = async (req, res) => {
+    await Coach.findByIdAndDelete(req.params.id);
+    req.flash('msg_successfull', 'Entrenador eliminado exitosamente');
+    res.redirect('/coaches');
+};
+
 module.exports = coachesCtrl;

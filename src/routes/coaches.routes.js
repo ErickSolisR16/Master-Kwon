@@ -19,4 +19,6 @@ router.get('/coaches/edit/:id', renderEditForm);
 
 router.put('/coaches/edit/:id', update);
 
+router.delete('/coaches/delete/:id', deleteCoach);
+
 module.exports = router;
