@@ -144,5 +144,67 @@ coachesCtrl.rendercoaches = async (req, res) => {
     res.render('coaches/allCoaches', { coachs });
 };
 
+/**
+ * Rendering an coach's update form
+ * 
+ * @param {*} req 
+ * @param {*} res 
+ */
+coachesCtrl.renderEditForm = async (req, res) => {
+    const coach = await Coach.findById(req.params.id).lean();
+    res.render('coaches/editCoach', { coach });
+};
+
+/**
+ * We update the trainer
+ * 
+ * @param {*} req 
+ * @param {*} res 
+ */
+coachesCtrl.update = async (req, res) => {
+    const errors = [];
+    const { name, mail, belt, dateBirth, phoneNumber, emergencyNumber, bloodType } = req.body;
+    let allergies = req.body.allergies;
+    let treatments = req.body.treatments;
+    if (!name) {
+        errors.push({ text: 'No se introdujo el nombre del entrenador' });
+    }
+    if (!mail) {
+        errors.push({ text: 'No se introdujo el correo del entrenador' });
+    }
+    if (!belt) {
+        errors.push({ text: 'No se introdujo el cinturón del entrenador' });
+    }
+    if (!dateBirth) {
+        errors.push({ text: 'No se introdujo la fecha de nacimiento del entrenador' });
+    }
+    if (!phoneNumber) {
+        errors.push({ text: 'No se introdujo el celular del entrenador' });
+    }
+    if (!emergencyNumber) {
+        errors.push({ text: 'No se introdujo el número de emergencia del entrenador' });
+    }
+    if (!bloodType) {
+        errors.push({ text: 'No se introdujo el tipo de sangre del entrenador' });
+    }
+    if (errors.length > 0) {
+        const coach = await Coach.findById(req.params.id).lean();
+        return res.render('coaches/editCoach', {
+            errors,
+            coach
+        });
+    } else {
+        if (allergies == '') {
+            allergies = 'No aplica';
+        }
+        if (treatments == '') {
+            treatments = 'No aplica';
+        }
+        var age = calculateAge(dateBirth);
+        await Coach.findByIdAndUpdate(req.params.id, { name, mail, belt, dateBirth, age, phoneNumber, bloodType, allergies, treatments })
+        req.flash('msg_successfull', 'Entrenador actualizado exitosamente');
+        res.redirect('/coaches');
+    }
+};
 
 module.exports = coachesCtrl;

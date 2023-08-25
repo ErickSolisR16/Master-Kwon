@@ -1,0 +1,51 @@
+<div class="col-md-6 mx-auto">
+    <div class="card text-center">
+        <div class="card-header">
+            <h3>Editar entrenador</h3>
+        </div>
+        <div class="card-body">
+            <form action="/coaches/edit/{{coach._id}}?_method=PUT" method="POST">
+                <input type="hidden" name="_method" value="PUT">
+                <div class="form-group">
+                    <input type="text" name="name" class="form-control" value="{{coach.name}}" placeholder="Nombre">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="mail" class="form-control" value="{{coach.mail}}" placeholder="Correo">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="belt" class="form-control" value="{{coach.belt}}" placeholder="Cinturón">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="dateBirth" class="form-control" value="{{coach.dateBirth}}"
+                        placeholder="Fecha de nacimiento (dd/mm/aaaa)">
+                </div>
+                <div class="form-group">
+                    <input type="number" name="phoneNumber" class="form-control" value="{{coach.phoneNumber}}"
+                        placeholder="Celular">
+                </div>
+                <div class="form-group">
+                    <input type="number" name="emergencyNumber" class="form-control" value="{{coach.emergencyNumber}}"
+                        placeholder="Número de emergencia">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="bloodType" class="form-control" value="{{coach.bloodType}}"
+                        placeholder="Tipo de sangre">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="allergies" class="form-control" value="{{coach.allergies}}"
+                        placeholder="Alergias">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="treatments" class="form-control" value="{{coach.treatments}}"
+                        placeholder="Tratamientos">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary btn-block" type="submit">
+                        Salvar
+                    </button>
+                    <a href="/coaches" class="btn btn-danger btn-block">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
