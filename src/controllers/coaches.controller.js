@@ -239,4 +239,50 @@ coachesCtrl.signin = passport.authenticate('local', {
     failureFlash: true
 });
 
+/**
+ * Render the password change form
+ * 
+ * @param {*} req 
+ * @param {*} res 
+ */
+coachesCtrl.renderchangePassword = (req, res) => {
+    res.render('coaches/passwordChange');
+};
+
+/**
+ * Performs all the validation of a trainer's password change.
+ * 
+ * @param {*} req 
+ * @param {*} res 
+ * @returns 
+ */
+coachesCtrl.changePassword = async (req, res) => {
+    const { mail, password, confirm_password } = req.body;
+    const errors = [];
+    if (password.length < 4) {
+        errors.push({ text: 'La contraseña tiene que tener un mínimo de 4 caracteres' });
+    }
+    if (password != confirm_password) {
+        errors.push({ text: 'Las contraseñas no coinciden' });
+    }
+    if (errors.length > 0) {
+        return res.render('coaches/passwordChange', {
+            errors,
+            mail
+        });
+    } else {
+        const coach = await Coach.findOne({ mail: mail });
+        if (!coach) {
+            req.flash('msg_error', 'El entrenador no está registrado');
+            res.redirect('/coaches/changesPassword');
+        } else {
+            await Coach.findByIdAndUpdate(coach.id, { password });
+            coach.password = await coach.encryptPassword(password);
+            await coach.save();
+            req.flash('msg_successfull', 'Cambio de contraseña exitoso');
+            res.redirect('/coaches/signin');
+        }
+    }
+};
+
 module.exports = coachesCtrl;

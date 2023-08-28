@@ -9,7 +9,9 @@ const {
     update,
     deleteCoach,
     renderSigninForm,
-    signin
+    signin, 
+    renderchangePassword,
+    changePassword
 } = require('../controllers/coaches.controller');
 
 router.get('/coaches/add', renderForm);
@@ -27,5 +29,9 @@ router.delete('/coaches/delete/:id', deleteCoach);
 router.get('/coaches/signin', renderSigninForm);
 
 router.post('/coaches/signin', signin);
+
+router.get('/coaches/changesPassword', renderchangePassword);
+
+router.put('/coaches/changesPassword/', changePassword);
 
 module.exports = router;
