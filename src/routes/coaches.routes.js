@@ -3,28 +3,29 @@ const router = Router();
 
 const {
     renderForm,
-    newCoach, 
+    newCoach,
     rendercoaches,
     renderEditForm,
     update,
     deleteCoach,
     renderSigninForm,
-    signin, 
+    signin,
     renderchangePassword,
     changePassword
 } = require('../controllers/coaches.controller');
+const { isAuthenticated } = require('../helpers/auth');
 
-router.get('/coaches/add', renderForm);
+router.get('/coaches/add', isAuthenticated, renderForm);
 
-router.post('/coaches/newCoach', newCoach);
+router.post('/coaches/newCoach', isAuthenticated, newCoach);
 
-router.get('/coaches', rendercoaches);
+router.get('/coaches', isAuthenticated, rendercoaches);
 
-router.get('/coaches/edit/:id', renderEditForm);
+router.get('/coaches/edit/:id', isAuthenticated, renderEditForm);
 
-router.put('/coaches/edit/:id', update);
+router.put('/coaches/edit/:id', isAuthenticated, update);
 
-router.delete('/coaches/delete/:id', deleteCoach);
+router.delete('/coaches/delete/:id', isAuthenticated, deleteCoach);
 
 router.get('/coaches/signin', renderSigninForm);
 
