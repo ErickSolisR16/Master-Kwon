@@ -11,21 +11,22 @@ const {
     searchAthlete, 
     athleteSummary
 } = require('../controllers/athletes.controller');
+const { isAuthenticated } = require('../helpers/auth');
 
-router.get('/athletes/add', renderForm);
+router.get('/athletes/add', isAuthenticated, renderForm);
 
-router.post('/athletes/newAthlete', newAthlete);
+router.post('/athletes/newAthlete', isAuthenticated, newAthlete);
 
-router.get('/athletes', renderAthletes);
+router.get('/athletes', isAuthenticated, renderAthletes);
 
-router.get('/atheltes/edit/:id', renderEditForm);
+router.get('/atheltes/edit/:id', isAuthenticated, renderEditForm);
 
-router.put('/atheltes/edit/:id', update);
+router.put('/atheltes/edit/:id', isAuthenticated, update);
 
-router.delete('/athletes/delete/:id', deleteAthlete);
+router.delete('/athletes/delete/:id', isAuthenticated, deleteAthlete);
 
-router.post('/athletes/search', searchAthlete);
+router.post('/athletes/search', isAuthenticated, searchAthlete);
 
-router.get('/athletes/summary', athleteSummary);
+router.get('/athletes/summary', isAuthenticated, athleteSummary);
 
 module.exports = router;
