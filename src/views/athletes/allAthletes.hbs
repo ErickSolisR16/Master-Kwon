@@ -1,6 +1,6 @@
 <h2 class="title">Todos los atletas</h2>
 
-<form action="/athletes/search" method="POST">
+<form action="/athletes/search" method="POST" class="search">
     <div class="input-group">
         <input type="hidden" name="name" value="{{name}}">
         <input type="search" name="name" class="form-control rounded" placeholder="Buscar atleta">
@@ -13,7 +13,7 @@
 <div class="row">
     {{#each athletes}}
     <div class="col-md-4">
-        <div class="card" id="card-info">
+        <div class="card">
             <div class="card-body">
                 <h4 class="card-title d-flex justify-content-between aling-items-center">
                     {{name}} <a href="/atheltes/edit/{{_id}}"><i class="fa fa-pencil"></i></a>
@@ -57,5 +57,4 @@
         </div>
     </div>
     {{/each}}
-
 </div>

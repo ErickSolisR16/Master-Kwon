@@ -1,0 +1,22 @@
+body {
+    background-color: #0c3361;
+}
+
+.title {
+    text-align: center;
+    color: #fff;
+    padding-bottom: 25px;
+}
+
+.row {
+    padding-top: 20px;
+}
+
+.card {
+    margin-bottom: 20px;
+}
+
+.table {
+    text-align: center;
+    color: #fff;
+}
