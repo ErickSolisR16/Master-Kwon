@@ -1,11 +1,22 @@
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background-color: #0c3361;
+}
+
+.main-container {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
 }
 
 .title {
     text-align: center;
     color: #fff;
     padding-bottom: 25px;
+    padding-top: 25px;
 }
 
 .row {
@@ -16,7 +27,38 @@ body {
     margin-bottom: 20px;
 }
 
+.card-body p,
+.card-text {
+    color: #000;
+}
+
 .table {
     text-align: center;
     color: #fff;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+}
+
+#coaches-card {
+    margin: 15px;
+}
+
+p {
+    color: #fff;
+}
+
+.carousel-item img {
+    width: 525px;
+    height: 525px;
+}
+
+.carousel-caption {
+    background-color: rgb(0, 0, 0, .5);
+}
+
+.footer-container {
+    margin-top: auto;
 }
