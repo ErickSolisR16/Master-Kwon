@@ -10,6 +10,7 @@ const {
     deleteCoach,
     renderSigninForm,
     signin,
+    logout,
     renderchangePassword,
     changePassword
 } = require('../controllers/coaches.controller');
@@ -30,6 +31,8 @@ router.delete('/coaches/delete/:id', isAuthenticated, deleteCoach);
 router.get('/coaches/signin', renderSigninForm);
 
 router.post('/coaches/signin', signin);
+
+router.get('/coaches/logout', isAuthenticated, logout);
 
 router.get('/coaches/changesPassword', renderchangePassword);
 

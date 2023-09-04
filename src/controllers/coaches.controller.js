@@ -112,7 +112,7 @@ coachesCtrl.newCoach = async (req, res) => {
         newCoach.password = await newCoach.encryptPassword(password);
         await newCoach.save();
         req.flash('msg_successfull', 'Entrenador registrado exitosamente');
-        res.redirect('/');
+        res.redirect('/athletes');
     }
 };
 
@@ -238,6 +238,22 @@ coachesCtrl.signin = passport.authenticate('local', {
     successRedirect: '/athletes',
     failureFlash: true
 });
+
+/**
+ * Help with logout
+ * 
+ * @param {*} req 
+ * @param {*} res 
+ */
+coachesCtrl.logout = (req, res) => {
+    req.logout(function (err) {
+        if (err) {
+            return next(err);
+        }
+        req.flash('msg_successfull', 'Cerraste la sesión');
+        res.redirect('/coaches/signin');
+    });
+};
 
 /**
  * Render the password change form
