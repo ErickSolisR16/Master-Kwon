@@ -104,7 +104,7 @@ athletesCtrl.newAthlete = async (req, res) => {
         const newAthlete = new Athlete({ IDNumber, name, mail, headquarters, belt, dateBirth, age, trainingClass, phoneNumber, emergencyNumber, bloodType, allergies, treatments });
         await newAthlete.save();
         req.flash('msg_successfull', 'Atleta registrado exitosamente');
-        res.redirect('/');
+        res.redirect('/ahletes');
     }
 };
 
