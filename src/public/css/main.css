@@ -30,6 +30,12 @@ body {
     color: #fff;
 }
 
+@media (max-width: 600px) {
+    .table {
+        font-size: 12px;
+    }
+}
+
 .title {
     color: #fff;
     text-align: center;
