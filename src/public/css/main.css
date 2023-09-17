@@ -69,13 +69,18 @@ a {
     align-items: center;
 }
 
+.coaches .row .card img {
+    max-width: 284px;
+    max-height: 190px;
+}
+
 @media (min-width: 770px) {
     .coaches .row .card {
         margin-right: 15px;
     }
 }
 
-.coaches h1, 
+.coaches h1,
 .coaches p {
     text-align: center;
 }
