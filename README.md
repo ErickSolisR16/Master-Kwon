@@ -1,7 +1,7 @@
 # Master-Kwon 🥋
 Creation of a web application for the control of athletes and coaches of the Master Kwon Desamparados Taekwondo Academy
 
-![](./src/public/imgs/Escudo.png)
+![](./src/public/imgs/shield.webp)
 
 ## Table of content 
 
